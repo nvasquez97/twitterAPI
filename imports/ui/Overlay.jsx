@@ -25,12 +25,12 @@ export default class Overlay extends Component {
         console.log(this.props.getTweets);
         this.props.getTweets.map((tweet)=>{
             let point = laP(tweet.coordinates.coordinates);
-            console.log(point);
             ctx.moveTo(point[0], point[1]);
-            if(point[0]>-69)
+            if(point[0]>229 ||point[1]>229)
            	ctx.fillStyle = 'blue';
-           else
-           	ct.fillStayle = 'yellow';
+           	else
+           	ctx.fillStayle = 'black';
+
             ctx.arc(point[0], point[1], 3, 0, Math.PI * 2, true);
         });
         ctx.fill();
