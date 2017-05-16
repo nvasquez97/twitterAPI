@@ -32,9 +32,8 @@ export default class Overlay extends Component {
            	ctx.fillStyle = this.colores[con];
 
             ctx.arc(point[0], point[1], 3, 0, Math.PI * 2, true);
-            ctx.fill();
         });
-        
+        ctx.fill();
 	}
 
 	render(){
