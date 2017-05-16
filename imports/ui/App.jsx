@@ -47,10 +47,18 @@ export class App extends Component {
   }
 
   render() {
-    console.log("render!");
     return (
       <div>
-      <Overlay getProj={this.getProjection.bind(this)}/>
+      <div>
+        <h1>
+        Parcial Web Final:
+        </h1>
+        <h2>
+        Cada vez que haces click se actualiza el mapa con los nuevos Tweets!
+        </h2>
+
+      </div>
+      <Overlay getProj={this.getProjection.bind(this)} getTweets={this.props.tweets}/>
       <ColombiaMap width="600" height="600"  data={{RISARALDA:10}} setProj={this.setProjection.bind(this)}/>
         <input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
         { this.props && this.props.err ?

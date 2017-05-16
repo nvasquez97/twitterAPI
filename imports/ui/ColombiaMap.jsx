@@ -32,7 +32,8 @@ export default class ColombiaMap extends Component {
 
 		var path = d3.geo.path()
 		  .projection(this.projection);
-
+		  	
+		this.props.setProj(this.projection);
 		// Set svg width & height
 		var svg = d3.select(this.svg)
 		  .attr('width', width)
