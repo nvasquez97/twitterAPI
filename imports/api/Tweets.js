@@ -24,10 +24,10 @@ if (Meteor.isServer) {
 
       // Create the Twitter object
       let client = new Twitter({
-        consumer_key: process.env.TWITTER_CONSUMER_KEY,
-        consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-        access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-        access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+        consumer_key: "CyMqK8ic1gtyoEFKBjkrp264W",
+        consumer_secret: "DTKPAUwz3CaOozAV01HDAdzER5EJv7jQvNXduuzjs2fFCdVm2x",
+        access_token_key: "387353929-SL0dFUmzzZ2d4Rx2NUejFLlRbC9D6yvktoRnqBIA",
+        access_token_secret: "wK1nRNBPwvajldtJPDYpckwQqnvTuxm60lZSpYRrzLjrj"
       });
 
       if (stream) {
@@ -39,9 +39,10 @@ if (Meteor.isServer) {
 
        // Colombia
       let locations = "-79.12,-4.23,-66.85,12.59";
-      stream = client.stream("statuses/filter", {track: query, locations:locations});
+      stream = client.stream("statuses/filter", {locations:locations});
       stream.on("data", Meteor.bindEnvironment(function(tweet) {
         // resolve(tweet);
+        if(tweet.coordinates)
         Tweets.insert(tweet);
       }));
 
