@@ -25,6 +25,6 @@ meteor
 ```
 # Efecto único
 
-Como característica única, al pasar el mouse por el mapa va a actualizar los puntos, que va a discriminar por colores si está afuera del territorio de Colombia
+Como característica única, al pasar el mouse por el mapa va a actualizar los puntos, pintando de colores diferentes cada uno.
 
 

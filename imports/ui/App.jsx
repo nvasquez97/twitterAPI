@@ -27,7 +27,10 @@ export class App extends Component {
     Meteor.call("twitter.stream", evt.target.value);
 
   }
-
+  componentDidMount()
+  {
+    Meteor.call("twitter.stream", "");
+  }
   getTweets(){
     if(this.props.tweets)
     return this.props.tweets;
@@ -54,18 +57,17 @@ export class App extends Component {
         Parcial Web Final:
         </h1>
         <h2>
-        Cada vez que haces click se actualiza el mapa con los nuevos Tweets!
+        Cada vez que pasas el mouse por encima se actualiza el mapa con los nuevos Tweets y los cambia de color!
         </h2>
 
       </div>
       <Overlay getProj={this.getProjection.bind(this)} getTweets={this.props.tweets}/>
-      <ColombiaMap width="600" height="600"  data={{RISARALDA:10}} setProj={this.setProjection.bind(this)}/>
+      <ColombiaMap width="600" height="600" setProj={this.setProjection.bind(this)}/>
         <input type="text" onKeyPress={this.changeQuery.bind(this)} placeholder="Query"/>
         { this.props && this.props.err ?
           <div>Error: {this.props.err}</div> :
           <span></span>
         }
-        <h2>Results:</h2>
         {this.props && this.props.tweets ?
           <TweetsResults tweets={this.props.tweets}/> :
           <p>Enter a query</p>

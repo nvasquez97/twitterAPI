@@ -7,45 +7,43 @@ export default class Overlay extends Component {
 		super(props);
 		this.state ={
 			tweets:[],
-			canvas: null
+			canvas: null,			
 		}
+		this.colores=['green','blue','yellow','black', 'red', 'orange', 'grey'];
 	}
 
-	/*componentWillMount(nextProps){
-		this.setState({
-			tweets:nextProps.getTweets
-		})
-	}*/
+	randomBetween(min, max) {
+  		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min)) + min;
+  	}
 
 	draw(){
+		
 		var laP = this.props.getProj();
 		var can = this.state.canvas;
 		var ctx = can.getContext('2d');
+
         	ctx.beginPath();
-        console.log(this.props.getTweets);
         this.props.getTweets.map((tweet)=>{
+        	let con = this.randomBetween(0,7);
             let point = laP(tweet.coordinates.coordinates);
             ctx.moveTo(point[0], point[1]);
-            if(point[0]>229 ||point[1]>229)
-           	ctx.fillStyle = 'blue';
-           	else
-           	ctx.fillStayle = 'black';
+           	ctx.fillStyle = this.colores[con];
 
             ctx.arc(point[0], point[1], 3, 0, Math.PI * 2, true);
+            ctx.fill();
         });
-        ctx.fill();
+        
 	}
 
 	render(){
 		return(
 			<div className="over">  
-			<canvas height="600" width="600" ref={(can)=>{this.state.canvas=can}} onMouseOver={this.draw.bind(this)}>
+			<canvas height="600" width="600" ref={(can)=>{this.state.canvas=can}} onMouseOver={this.draw.bind(this)} onMouseOut={this.draw.bind(this)}>
 			</canvas>				
 			</div>
 			)
-
-
-
 	}
 
 
