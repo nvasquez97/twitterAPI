@@ -23,7 +23,7 @@ Y finalmente:
 meteor npm install
 meteor
 ```
-#Efecto único
+# Efecto único
 
 Como característica única, al pasar el mouse por el mapa va a actualizar los puntos, que va a discriminar por colores si está afuera del territorio de Colombia
 
